@@ -1,0 +1,64 @@
+// Config
+support-for-ie = false
+vendor-prefixes = webkit moz ms official
+
+// Colors — Plog palette
+color-default = #333
+color-grey = #999
+color-border = #ddd
+color-link = #2e405b
+color-background = #f5f5f5
+color-sidebar-text = #2e405b
+color-widget-background = transparent
+color-widget-border = #ddd
+color-footer-background = #2e405b
+color-mobile-nav-background = #2e405b
+color-twitter = #00aced
+color-facebook = #3b5998
+color-pinterest = #cb2027
+color-linkedin = #0077B5
+
+// Fonts — Source Sans Pro + Source Han
+font-sans = "Source Sans Pro", "Roboto", "Helvetica Neue",
+    "Source Han Sans SC", "Source Han Sans TC",
+    "PingFang SC", "PingFang HK", "PingFang TC",
+    sans-serif
+font-serif = "HiraMinProN-W6",
+    "Source Han Serif CN", "Source Han Serif SC",
+    "Source Han Serif TC", Georgia, "Times New Roman", serif
+font-mono = "Source Code Pro", Consolas, Monaco, Menlo, monospace
+font-icon = ForkAwesome
+font-size = 18px
+line-height = 1.6em
+line-height-title = 1.1em
+
+// Header
+logo-size = 40px
+subtitle-size = 16px
+banner-height = 0px
+banner-url = hexo-config("banner")
+
+sidebar = hexo-config("sidebar")
+
+// Layout — Two-column with fixed right sidebar
+block-margin = 50px
+article-padding = 20px
+mobile-nav-width = 280px
+main-column = 9
+sidebar-column = 3
+sidebar-width = 200px
+
+if sidebar and sidebar isnt bottom
+  _sidebar-column = sidebar-column
+else
+  _sidebar-column = 0
+
+// Grids
+column-width = 80px
+gutter-width = 20px
+columns = main-column + _sidebar-column
+
+// Media queries
+mq-mobile = "screen and (max-width: 479px)"
+mq-tablet = "screen and (min-width: 480px) and (max-width: 767px)"
+mq-normal = "screen and (min-width: 768px)"

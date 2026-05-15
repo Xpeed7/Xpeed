@@ -1,0 +1,225 @@
+// Plog Custom Styles — polebug-inspired design
+
+// CSS Variables
+:root
+  --primary-color: #2e405b
+  --bg-color: #f5f5f5
+  --text-color: #333
+  --hover-bg: #2e405b
+  --hover-text: #ffffff
+
+// Background — subtle texture (方案 A)
+body
+  background-color: var(--bg-color)
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d5d5d5' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+  background-repeat: repeat
+  background-attachment: fixed
+
+// Two-column layout
+.main-container
+  float: left
+  width: "calc(100% - %s)" % (sidebar-width + 40px)
+  padding: 40px 40px
+  min-height: 100vh
+  animation: fadeIn 0.8s ease-out
+
+// Fixed right sidebar
+.side-container
+  position: fixed
+  right: 0
+  top: 0
+  width: sidebar-width
+  height: 100vh
+  padding: 40px 20px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  animation: fadeInTop 1s ease-out
+
+.side-inner
+  display: flex
+  flex-direction: column
+  align-items: center
+
+// Vertical site title — signature design element
+.site-title
+  writing-mode: vertical-rl
+  text-orientation: mixed
+  border-left: 3px solid var(--primary-color)
+  padding-left: 12px
+  letter-spacing: 0.15em
+  color: var(--primary-color)
+  font-family: font-serif
+  font-size: 20px
+  font-weight: 600
+  text-decoration: none
+  transition: opacity 0.2s ease
+  &:hover
+    opacity: 0.7
+    color: var(--primary-color)
+    background: none
+
+.site-subtitle
+  writing-mode: vertical-rl
+  text-orientation: mixed
+  font-size: 12px
+  color: color-grey
+  margin-top: 16px
+  letter-spacing: 0.1em
+
+// Sidebar navigation
+.side-nav
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin-top: 24px
+
+.side-nav-link
+  writing-mode: vertical-rl
+  text-orientation: mixed
+  color: var(--primary-color)
+  text-decoration: none
+  font-size: 14px
+  margin: 4px 0
+  padding: 2px 4px
+  transition: all 0.2s ease
+  &:hover
+    color: var(--hover-text)
+    background-color: var(--hover-bg)
+
+.side-bottom
+  .side-author
+    writing-mode: vertical-rl
+    text-orientation: mixed
+    font-size: 11px
+    color: color-grey
+
+// Link interaction
+a
+  color: var(--primary-color)
+  text-decoration: none
+  padding: 1px 3px
+  transition: all 0.2s ease
+
+a:hover
+  color: var(--hover-text)
+  background-color: var(--hover-bg)
+
+// Override header in main area — minimal style
+#header
+  background: transparent !important
+  border-bottom: 1px solid color-border
+  padding: 20px 0
+  margin-bottom: 30px
+  #banner
+    display: none
+  #header-outer
+    padding: 0
+  #logo-wrap, #subtitle-wrap
+    display: inline-block
+  #logo
+    font-family: font-serif
+    font-size: 22px
+    color: var(--primary-color)
+  #subtitle
+    font-size: 14px
+    color: color-grey
+  #main-nav
+    float: right
+  .main-nav-link
+    font-size: 14px
+    color: var(--primary-color)
+
+// Article styles
+.post-item
+  animation: fadeIn 1s ease-out
+
+.post-content
+  animation: fadeInRight 1s ease-out
+
+.article
+  margin-bottom: block-margin
+  .article-title
+    font-family: font-serif
+    font-size: 26px
+    color: var(--primary-color)
+    line-height: line-height-title
+  .article-entry
+    line-height: 1.8
+    img
+      max-width: 100%
+      height: auto
+      object-fit: cover
+      loading: lazy
+      border-radius: 4px
+      margin: 16px 0
+
+// Footer
+#footer
+  background: transparent
+  color: color-grey
+  font-size: 12px
+  padding: 20px 0
+  border-top: 1px solid color-border
+
+// Animations
+@keyframes fadeIn
+  from { opacity: 0; }
+  to { opacity: 1; }
+
+@keyframes fadeInRight
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+
+@keyframes fadeInTop
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+
+@keyframes swiftDown
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+
+// Responsive
+@media screen and (max-width: 768px)
+  .side-container
+    position: relative
+    width: 100%
+    height: auto
+    padding: 20px
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+  .site-title
+    writing-mode: horizontal-tb
+    border-left: none
+    border-bottom: 2px solid var(--primary-color)
+    padding-left: 0
+    padding-bottom: 8px
+  .site-subtitle
+    writing-mode: horizontal-tb
+    margin-top: 8px
+  .side-nav
+    flex-direction: row
+    margin-top: 12px
+    flex-wrap: wrap
+    justify-content: center
+    gap: 8px
+  .side-nav-link
+    writing-mode: horizontal-tb
+    margin: 0 4px
+  .side-bottom
+    width: 100%
+    text-align: center
+    margin-top: 12px
+    .side-author
+      writing-mode: horizontal-tb
+  .main-container
+    float: none
+    width: 100%
+    padding: 20px
+  body
+    font-size: 16px
+
+// Hide old sidebar when using new side-container
+#sidebar
+  display: none

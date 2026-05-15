@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head') %>
+<body>
+  <div id="container">
+    <div class="main-container">
+      <div id="wrap">
+        <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+        <div class="outer">
+          <section id="main"><%- body %></section>
+        </div>
+        <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+      </div>
+    </div>
+    <aside class="side-container">
+      <div class="side-inner">
+        <a href="<%- url_for() %>" class="site-title"><%= config.title %></a>
+        <% if (config.subtitle){ %>
+          <p class="site-subtitle"><%= config.subtitle %></p>
+        <% } %>
+        <nav class="side-nav">
+          <% if (theme.menu) { for (var i in theme.menu){ %>
+            <a class="side-nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+          <% }} %>
+        </nav>
+      </div>
+      <div class="side-bottom">
+        <span class="side-author">&copy; <%= config.author %></span>
+      </div>
+    </aside>
+    <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
+    <%- partial('_partial/after-footer') %>
+  </div>
+</body>
+</html>
