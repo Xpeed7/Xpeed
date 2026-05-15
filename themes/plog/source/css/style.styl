@@ -2,7 +2,6 @@
 @import "_variables"
 @import "_util/mixin"
 @import "_util/grid"
-@import "_plog"
 
 global-reset()
 
@@ -46,14 +45,14 @@ body
   overflow: hidden
 
 #wrap
-  height: 100%
+  height: auto
   width: 100%
-  position: absolute
-  top: 0
-  left: 0
+  position: relative
+  top: auto
+  left: auto
   transition: 0.2s ease-out
   z-index: 1
-  background: color-background
+  background: transparent
   .mobile-nav-on &
     left: mobile-nav-width
 
@@ -78,3 +77,6 @@ if sidebar is left
 
 if sidebar
   @import "_partial/sidebar"
+
+// Custom Plog styles — MUST be last to override everything
+@import "_plog"

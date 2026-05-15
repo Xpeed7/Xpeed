@@ -1,4 +1,5 @@
 // Plog Custom Styles — polebug-inspired design
+// This file is imported LAST to override all default landscape styles
 
 // CSS Variables
 :root
@@ -8,14 +9,19 @@
   --hover-bg: #2e405b
   --hover-text: #ffffff
 
-// Background — subtle texture (方案 A)
+// === Background ===
 body
-  background-color: var(--bg-color)
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d5d5d5' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
-  background-repeat: repeat
-  background-attachment: fixed
+  background-color: var(--bg-color) !important
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d5d5d5' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important
+  background-repeat: repeat !important
+  background-attachment: fixed !important
+  font-size: 18px !important
+  line-height: 1.6 !important
 
-// Two-column layout
+// === Two-column layout ===
+#container
+  overflow: hidden
+
 .main-container
   float: left
   width: "calc(100% - %s)" % (sidebar-width + 40px)
@@ -23,7 +29,12 @@ body
   min-height: 100vh
   animation: fadeIn 0.8s ease-out
 
-// Fixed right sidebar
+#wrap
+  position: relative !important
+  height: auto !important
+  background: transparent !important
+
+// === Fixed right sidebar ===
 .side-container
   position: fixed
   right: 0
@@ -34,40 +45,42 @@ body
   display: flex
   flex-direction: column
   justify-content: space-between
+  align-items: center
   animation: fadeInTop 1s ease-out
+  background: rgba(255,255,255,0.3)
 
 .side-inner
   display: flex
   flex-direction: column
   align-items: center
 
-// Vertical site title — signature design element
+// === Vertical site title ===
 .site-title
   writing-mode: vertical-rl
   text-orientation: mixed
   border-left: 3px solid var(--primary-color)
   padding-left: 12px
   letter-spacing: 0.15em
-  color: var(--primary-color)
-  font-family: font-serif
-  font-size: 20px
-  font-weight: 600
+  color: var(--primary-color) !important
+  font-family: "HiraMinProN-W6", "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", Georgia, serif !important
+  font-size: 20px !important
+  font-weight: 600 !important
   text-decoration: none
   transition: opacity 0.2s ease
   &:hover
     opacity: 0.7
-    color: var(--primary-color)
-    background: none
+    color: var(--primary-color) !important
+    background: none !important
 
 .site-subtitle
   writing-mode: vertical-rl
   text-orientation: mixed
   font-size: 12px
-  color: color-grey
+  color: #999
   margin-top: 16px
   letter-spacing: 0.1em
 
-// Sidebar navigation
+// === Sidebar navigation ===
 .side-nav
   display: flex
   flex-direction: column
@@ -77,92 +90,127 @@ body
 .side-nav-link
   writing-mode: vertical-rl
   text-orientation: mixed
-  color: var(--primary-color)
-  text-decoration: none
+  color: var(--primary-color) !important
+  text-decoration: none !important
   font-size: 14px
   margin: 4px 0
   padding: 2px 4px
   transition: all 0.2s ease
+  opacity: 1 !important
   &:hover
-    color: var(--hover-text)
-    background-color: var(--hover-bg)
+    color: var(--hover-text) !important
+    background-color: var(--hover-bg) !important
 
 .side-bottom
   .side-author
     writing-mode: vertical-rl
     text-orientation: mixed
     font-size: 11px
-    color: color-grey
+    color: #999
 
-// Link interaction
+// === Link interaction ===
 a
   color: var(--primary-color)
   text-decoration: none
   padding: 1px 3px
   transition: all 0.2s ease
 
-a:hover
-  color: var(--hover-text)
-  background-color: var(--hover-bg)
-
-// Override header in main area — minimal style
+// === Override header in main area ===
 #header
   background: transparent !important
-  border-bottom: 1px solid color-border
-  padding: 20px 0
-  margin-bottom: 30px
-  #banner
-    display: none
-  #header-outer
-    padding: 0
-  #logo-wrap, #subtitle-wrap
-    display: inline-block
-  #logo
-    font-family: font-serif
-    font-size: 22px
-    color: var(--primary-color)
-  #subtitle
-    font-size: 14px
-    color: color-grey
-  #main-nav
-    float: right
-  .main-nav-link
-    font-size: 14px
-    color: var(--primary-color)
+  height: auto !important
+  border-bottom: 1px solid #ddd !important
+  padding: 20px 0 !important
+  margin-bottom: 30px !important
+  position: relative !important
+  &:before, &:after
+    display: none !important
 
-// Article styles
-.post-item
-  animation: fadeIn 1s ease-out
+#banner
+  display: none !important
 
-.post-content
-  animation: fadeInRight 1s ease-out
+#header-outer
+  height: auto !important
+
+#header-title
+  position: static !important
+  height: auto !important
+  margin-top: 0 !important
+
+#logo
+  font-family: "HiraMinProN-W6", "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", Georgia, serif !important
+  font-size: 22px !important
+  color: var(--primary-color) !important
+  text-shadow: none !important
+  letter-spacing: 2px
+
+#subtitle
+  font-size: 14px !important
+  color: #999 !important
+  text-shadow: none !important
+
+#subtitle-wrap
+  margin-top: 8px !important
+
+.nav-icon, .main-nav-link
+  color: var(--primary-color) !important
+  text-shadow: none !important
+  opacity: 0.8 !important
+  &:hover
+    opacity: 1 !important
+    background-color: transparent !important
+
+// === Article styles ===
+.article-inner
+  background: #fff
+  box-shadow: 1px 2px 3px #ddd
+  border: 1px solid #ddd
+  border-radius: 3px
 
 .article
-  margin-bottom: block-margin
-  .article-title
-    font-family: font-serif
-    font-size: 26px
-    color: var(--primary-color)
-    line-height: line-height-title
-  .article-entry
-    line-height: 1.8
-    img
-      max-width: 100%
-      height: auto
-      object-fit: cover
-      loading: lazy
-      border-radius: 4px
-      margin: 16px 0
+  margin-bottom: 50px
+  animation: fadeIn 1s ease-out
 
-// Footer
+.article-title
+  font-family: "HiraMinProN-W6", "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", Georgia, serif !important
+  font-size: 26px !important
+  color: var(--primary-color) !important
+  line-height: 1.1em !important
+
+.article-entry
+  line-height: 1.8 !important
+  color: #333
+  img
+    max-width: 100%
+    height: auto
+    object-fit: cover
+    border-radius: 4px
+    margin: 16px auto
+    display: block
+
+.article-entry blockquote
+  font-family: "HiraMinProN-W6", "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", Georgia, serif
+  color: #666
+
+// === Footer override ===
 #footer
-  background: transparent
-  color: color-grey
-  font-size: 12px
-  padding: 20px 0
-  border-top: 1px solid color-border
+  background: transparent !important
+  color: #999 !important
+  font-size: 12px !important
+  padding: 20px 0 !important
+  border-top: 1px solid #ddd !important
 
-// Animations
+#footer a
+  color: var(--primary-color) !important
+  &:hover
+    background-color: transparent !important
+    text-decoration: underline !important
+
+// === Hide old sidebar ===
+#sidebar
+  display: none !important
+
+// === Animations ===
 @keyframes fadeIn
   from { opacity: 0; }
   to { opacity: 1; }
@@ -179,7 +227,7 @@ a:hover
   from { opacity: 0; transform: translateY(-40px); }
   to { opacity: 1; transform: translateY(0); }
 
-// Responsive
+// === Responsive ===
 @media screen and (max-width: 768px)
   .side-container
     position: relative
@@ -189,6 +237,7 @@ a:hover
     flex-direction: row
     flex-wrap: wrap
     justify-content: center
+    background: transparent
   .site-title
     writing-mode: horizontal-tb
     border-left: none
@@ -218,8 +267,4 @@ a:hover
     width: 100%
     padding: 20px
   body
-    font-size: 16px
-
-// Hide old sidebar when using new side-container
-#sidebar
-  display: none
+    font-size: 16px !important
